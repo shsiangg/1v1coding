@@ -1,0 +1,28 @@
+<h1>Listing Challenges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prompt</th>
+      <th>Response</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for challenge <- @challenges do %>
+    <tr>
+      <td><%= challenge.prompt %></td>
+      <td><%= challenge.response %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.challenge_path(@conn, :show, challenge) %></span>
+        <span><%= link "Edit", to: Routes.challenge_path(@conn, :edit, challenge) %></span>
+        <span><%= link "Delete", to: Routes.challenge_path(@conn, :delete, challenge), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Challenge", to: Routes.challenge_path(@conn, :new) %></span>

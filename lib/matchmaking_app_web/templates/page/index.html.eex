@@ -1,0 +1,11 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
+  <p>A productive web framework that<br/>does not compromise speed and maintainability.</p>
+</section>
+
+<section class="row">
+  <article class="column">
+    <input id="code_input" >
+    
+  </article>
+</section>

@@ -1,0 +1,18 @@
+<h1>Show Challenge</h1>
+
+<ul>
+
+  <li>
+    <strong>Prompt:</strong>
+    <%= @challenge.prompt %>
+  </li>
+
+  <li>
+    <strong>Response:</strong>
+    <%= @challenge.response %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.challenge_path(@conn, :edit, @challenge) %></span>
+<span><%= link "Back", to: Routes.challenge_path(@conn, :index) %></span>
