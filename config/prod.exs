@@ -10,12 +10,21 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :matchmaking_app, MatchmakingAppWeb.Endpoint,
+  server: true,
   http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost", port: 80],
+  url: [host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "https://mystifying-lewin-6b0fee.netlify.app/", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
+  secret_key_base: "${SECRET_KEY_BASE}"
 
 # Do not print debug messages in production
 config :logger, level: :info
+
+config :matchmaking_app, MatchmakingApp.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: "${DATABASE_URL}"
+  ssl: true,
+  database: "",
+  pool_size: 1
 
 # ## SSL Support
 #
@@ -61,7 +70,7 @@ config :logger, level: :info
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
 #
-config :matchmaking_app, MatchmakingAppWeb.Endpoint, server: true
+# config :matchmaking_app, MatchmakingAppWeb.Endpoint, server: true
 #
 # Note you can't rely on `System.get_env/1` when using releases.
 # See the releases documentation accordingly.
